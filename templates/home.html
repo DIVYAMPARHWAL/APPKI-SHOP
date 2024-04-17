@@ -1,0 +1,434 @@
+{% extends "base.html" %} 
+{% load static%} {% load slide_template_tags %} {%block head_title %}Home{% endblock %} 
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'font/font-awesome-4.7.0/css/font-awesome.min.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'font/themify/themify-icons.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'font/Linearicons-Free-v1.0.0/icon-font.min.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'font/elegant-font/html-css/style.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/lightbox2/css/lightbox.min.css' %}" />
+<!--===============================================================================================-->
+
+<style>
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 575px) {
+    .card-img-top {
+      width: 100%;
+      height: 65vw;
+      object-fit: cover;
+    }
+  }
+</style>
+{% endblock %} 
+{% block content %}
+
+<!-- Slide1 -->
+<section class="slide1">
+  <div class="wrap-slick1">
+    <div class="slick1">{% slides %}</div>
+  </div>
+</section>
+{% comment %}
+<div class="container mt-5">
+  <h1>Latest</h1>
+  <div class="row">
+    <div class="class">
+      <div class="card-group">
+        {% for item in object_list %}
+        {% if item.date_published.date <= time.date and item.date_published.date>= time_pass.date %}
+          <div class="card p-2 border-white">
+            <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" class="card-img-top imagecrd rounded"
+                alt="{{ item.image.name }}" /></a>
+            <div class="card-body">
+              <h5 class="card-title text-center">
+                <a href="{{ item.get_absolute_url }}"
+                  class="text-decoration-none text-capitalize text-black fs-20">{{item.title}}
+                  <span class="badge badge-pill {{ item.get_label_display }}-color">New</span>
+                </a>
+                <a href="{% url 'user:category' item.category.slug %}" class="grey-text fs-15">
+                  <h5>{{ item.category}}</h5>
+                </a>
+              </h5>
+              <h4 class="font-weight-bold text-info text-center">
+                <strong>Rs. {% if item.discount_price %}
+                  {{ item.discount_price }}
+                  {% else %} {{ item.price }}
+                  {% endif %}
+                </strong>
+              </h4>
+              <p class="card-text text-center">{{item.short_description}}
+              </p>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <h1>Electronic</h1>
+  <div class="row">
+    <div class="class ">
+      <div class="card-group product-slider">
+        {% for item in object_list %}
+        {% if item.category.slug == "electornic_items" %}
+        <div class="card text-bg-success border-success text-white p-2 product-card">
+          <a href="{{ item.get_absolute_url }}"><img src="{{item.image.url}}" class="card-img-top imagecrd rounded"
+              alt="{{item.title}}" /></a>
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              <a href="{{ item.get_absolute_url }}"
+                class="text-decoration-none text-capitalize text-white fs-20">{{item.title}}
+                <span class="badge badge-pill {{ item.get_label_display }}-color">New</span>
+              </a>
+              <a href="{% url 'user:category' item.category.slug %}" class="white-text fs-15">
+                <h5>{{ item.category}}</h5>
+              </a>
+            </h5>
+            <h4 class="font-weight-bold text-center">
+              <strong>Rs. {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %} {{ item.price }} {% endif %}
+              </strong>
+            </h4>
+            <p class="card-text text-center">{{item.short_description}}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end men outflit -->
+<div class="container mt-5">
+  <h1>Men Wearables</h1>
+  <div class="row">
+    <div class="class">
+      <div class="card-group">
+        {% for item in object_list %}
+        {% if item.category.slug == "men_wearable" %}
+        <div class="card text-bg-dark p-2">
+          <a href="{{ item.get_absolute_url }}"><img src="{{item.image.url}}" class="card-img-top imagecrd rounded"
+              alt="{{item.title}}" /></a>
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              <a href="{{ item.get_absolute_url }}"
+                class="text-decoration-none text-capitalize text-white fs-20">{{item.title}}
+                <span class="badge badge-pill {{ item.get_label_display }}-color">New</span>
+              </a>
+              <a href="{% url 'user:category' item.category.slug %}" class="white-text fs-15">
+                <h5>{{ item.category}}</h5>
+              </a>
+            </h5>
+            <h4 class="font-weight-bold text-center">
+              <strong>Rs. {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %} {{ item.price }} {% endif %}
+              </strong>
+            </h4>
+            <p class="card-text text-center">{{item.short_description}}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+<!-- latest products  -->
+<div class="container mt-5">
+  <nav class="navbar navbar-expand-lg text-bg-info">
+    <div class="container-fluid text-align-center">
+      <a class="navbar-brand text-white" href="{% url 'user:category' 'electornic_items' %}">
+        <h3>LATEST PRODUCCTS</h3>
+      </a>
+      <a href="{% url 'user:category' 'men_wearable' %}">
+        <button class="btn btn-outline-light" type="submit">View All</button>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="container mt-2">
+  <div class="home-demo">
+    <div class="owl-carousel owl-theme">
+      {% for item in object_list %}
+      {% if item.date_published.date <= time.date and item.date_published.date >= time_pass.date %}
+      <div class="item">
+        <div class="card p-2 product-card">
+          <a href="{{ item.get_absolute_url }}"><img src="{{item.image.url}}" class="card-img-top imagecrd rounded"
+              alt="{{item.title}}" /></a>
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              <a href="{{ item.get_absolute_url }}"
+                class="text-decoration-none text-capitalize text-info fs-20">{{item.title}}
+                <span class="badge badge-pill mx-2 {{ item.get_label_display }}-color">New</span>
+              </a>
+              <a href="{% url 'user:category' item.category.slug %}" class="white-text fs-15">
+                <h5>{{ item.category}}</h5>
+              </a>
+            </h5>
+            <h4 class="font-weight-bold text-center">
+              <strong>Rs. {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %} {{ item.price }} {% endif %}
+              </strong>
+            </h4>
+            <p class="card-text text-center">{{item.short_description}}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- Electornic items -->
+<div class="container mt-5">
+  <nav class="navbar navbar-expand-lg text-bg-dark">
+    <div class="container-fluid text-align-center">
+      <a class="navbar-brand text-white" href="{% url 'user:category' 'electornic_items' %}">
+        <h3>ELECTRONICS</h3>
+      </a>
+      <a href="{% url 'user:category' 'electornic_items' %}">
+        <button class="btn btn-outline-light" type="submit">View All</button>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="container mt-2">
+  <div class="home-demo">
+    <div class="owl-carousel owl-theme">
+      {% for item in object_list %}
+      {% if item.category.slug == "electornic_items" %}
+      <div class="item">
+        <div class="card p-2 product-card">
+          <a href="{{ item.get_absolute_url }}"><img src="{{item.image.url}}" class="card-img-top imagecrd rounded"
+              alt="{{item.title}}" /></a>
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              <a href="{{ item.get_absolute_url }}"
+                class="text-decoration-none text-capitalize text-info fs-20">{{item.title}}
+                <span class="badge badge-pill mx-2 {{ item.get_label_display }}-color">New</span>
+              </a>
+              <a href="{% url 'user:category' item.category.slug %}" class="white-text fs-15">
+                <h5>{{ item.category}}</h5>
+              </a>
+            </h5>
+            <h4 class="font-weight-bold text-center">
+              <strong>Rs. {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %} {{ item.price }} {% endif %}
+              </strong>
+            </h4>
+            <p class="card-text text-center">{{item.short_description}}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- men Wearables -->
+<div class="container mt-5">
+  <nav class="navbar navbar-expand-lg text-bg-success">
+    <div class="container-fluid text-align-center">
+      <a class="navbar-brand text-white" href="{% url 'user:category' 'electornic_items' %}">
+        <h3>MEN WEARABLES</h3>
+      </a>
+      <a href="{% url 'user:category' 'men_wearable' %}">
+        <button class="btn btn-outline-light" type="submit">View All</button>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="container mt-2">
+  <div class="home-demo">
+    <div class="owl-carousel owl-theme">
+      {% for item in object_list %}
+      {% if item.category.slug == "men_wearable" %}
+      <div class="item">
+        <div class="card p-2 product-card">
+          <a href="{{ item.get_absolute_url }}"><img src="{{item.image.url}}" class="card-img-top imagecrd rounded"
+              alt="{{item.title}}" /></a>
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              <a href="{{ item.get_absolute_url }}"
+                class="text-decoration-none text-capitalize text-info fs-20">{{item.title}}
+                <span class="badge badge-pill mx-2 {{ item.get_label_display }}-color">New</span>
+              </a>
+              <a href="{% url 'user:category' item.category.slug %}" class="white-text fs-15">
+                <h5>{{ item.category}}</h5>
+              </a>
+            </h5>
+            <h4 class="font-weight-bold text-center">
+              <strong>Rs. {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %} {{ item.price }} {% endif %}
+              </strong>
+            </h4>
+            <p class="card-text text-center">{{item.short_description}}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- women Wearables -->
+<div class="container mt-5">
+  <nav class="navbar navbar-expand-lg text-bg-danger">
+    <div class="container-fluid text-align-center">
+      <a class="navbar-brand text-white" href="{% url 'user:category' 'electornic_items' %}">
+        <h3>WOMEN WEARABLES</h3>
+      </a>
+      <a href="{% url 'user:category' 'women-wear' %}">
+        <button class="btn btn-outline-light" type="submit">View All</button>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="container mt-2">
+  <div class="home-demo">
+    <div class="owl-carousel owl-theme">
+      {% for item in object_list %}
+      {% if item.category.slug == "women-wear" %}
+      <div class="item">
+        <div class="card p-2 product-card">
+          <a href="{{ item.get_absolute_url }}"><img src="{{item.image.url}}" class="card-img-top imagecrd rounded"
+              alt="{{item.title}}" /></a>
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              <a href="{{ item.get_absolute_url }}"
+                class="text-decoration-none text-capitalize text-info fs-20">{{item.title}}
+                <span class="badge badge-pill mx-2 {{ item.get_label_display }}-color">New</span>
+              </a>
+              <a href="{% url 'user:category' item.category.slug %}" class="white-text fs-15">
+                <h5>{{ item.category}}</h5>
+              </a>
+            </h5>
+            <h4 class="font-weight-bold text-center">
+              <strong>Rs. {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %} {{ item.price }} {% endif %}
+              </strong>
+            </h4>
+            <p class="card-text text-center">{{item.short_description}}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    $(document).ready(function ($) {
+      $('.card').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: false,
+        autoplaySpeed: 2000,
+        arrows: true,
+        responsive: [{
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 400,
+          settings: {
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }]
+      });
+    });
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.product-slider').slick({
+          dots: true,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        });
+                });
+
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+                $(function () {
+            // Owl Carousel
+            var owl = $(".owl-carousel");
+                owl.owlCarousel({
+                  items: 4,
+                margin: 10,
+                loop: true,
+                nav: true,
+            });
+        });
+
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+{% endblock extra_scripts %}

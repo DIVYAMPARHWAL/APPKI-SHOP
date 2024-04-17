@@ -1,0 +1,50 @@
+{% extends "shop/partials/base.html" %}
+{% load static %}
+{% block head_title %}Shop | Login Page{% endblock %}
+{% block content %}
+
+    <div class="container d-flex justify-content-center mt-4">
+        <div class="card mt-5" style="max-width: 1000px;">
+            <div class="row g-1">
+                <div class="col-md-4">
+                    <img src="{% static 'img/login1.jpg' %}" class="img-fluid" alt="...">
+                </div>
+                <div class="col-md-8" id="img">
+                    <div class="card-body mt-3 ">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <h5 class="card-title mt-4 text-center">LOG IN</h5>
+                            <center>
+
+
+
+                                <div class="form-floating  mb-3 col-6 mt-5">
+                                    <input type="text" class="form-control" id="floatingInput"
+                                        placeholder="username" name="username">
+                                    <label for="floatingInput" class="ms-2">Username</label>
+                                </div>
+                                <div class="form-floating col-6">
+                                    <input type="password" class="form-control" id="floatingPassword"
+                                        placeholder="Password" name="password">
+                                    <label for="floatingPassword" class="ms-2">Password</label>
+                                </div>
+                                <a href="" class="text-info">Forget Password</a>
+                            </center>
+                            <div class="d-grid gap-2 col-6 mx-auto mt-3 text-center">
+                                <input type="submit" class="btn btn-outline-primary w-75" value="LOGIN">
+                                <h6 class="text-center mt-2">-------------------- or ---------------------</h6>
+                                <i class="fa-brands fa-google text-center mt-3  " style="color: #000000;"><i
+                                        class="fa-brands fa-facebook ms-3" style="color: #000000;"></i></i>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%for message in messages%}
+    <p>{{message}}</p>
+    {%endfor%}
+
+{% endblock content %}

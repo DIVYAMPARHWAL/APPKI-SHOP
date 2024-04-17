@@ -1,0 +1,132 @@
+{% extends "base.html" %} 
+{% load static%}
+{% block extra_head %}
+<style>
+    body {
+    background: rgb(99, 39, 120)
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+.card a{
+    color:white;
+    text-decoration:none;
+    font-size:1.2rem;
+}
+.card a:hover{
+    color:purple;
+}
+</style>
+{% endblock %} 
+{% block content %}
+
+<div class="container rounded bg-white mb-3">
+    <div class="row justify-content-center">
+            <div class="card text-white bg-primary col-mb-3 mx-2 mt-2 text-center" style="max-width: 15rem; max-height:12rem;">
+                <div class="card-header "><a href="{% url 'user:order-history' request.user.id %}">Order</a></div>
+                <div class="card-body">
+                  <h5 class="card-title"><a href="{% url 'user:order-history' request.user.id %}">View, Track & request refund or exchange </a></h5>
+                </div>
+              </div>
+              <div class="card text-white bg-warning col-mb-3 mx-2 mt-2 text-center" style="max-width: 15rem; max-height:12rem;">
+                <div class="card-header"><a href="/"> Account </a></div>
+                <div class="card-body">
+                  <h5 class="card-title"><a href="/">Edit, Personal Infomation, Change Password</a></h5>
+                </div>
+              </div>
+              <div class="card text-white bg-success col-mb-3 mx-2 mt-2 text-center" style="max-width: 15rem; max-height:12rem;">
+                <div class="card-header"><a href="{% url 'user:wishlist'%}">Wishlist</a></div>
+                <div class="card-body">
+                  <h5 class="card-title"><a href="{% url 'user:wishlist'%}">Buy later, or liked products</a></h5>
+                </div>
+              </div>
+              <div class="card text-white bg-danger col-mb-3 mx-2 mt-2 text-center" style="max-width: 15rem; max-height:12rem;">
+                <div class="card-header"><a href="/">Become a Seller</a></div>
+                <div class="card-body">
+                  <h5 class="card-title"><a href="/">Able to sell products on our website</a></h5>
+                </div>
+              </div>
+    </div>
+    <div class="row">
+        {% if data %}
+        <div class="col-md-5 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5 me-5">
+                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">{{data.username}}</span><span class="text-black-60">{{data.email}}</span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name</label>
+                        <input type="text" class="form-control" placeholder="first name" value="{{data.username}}" readonly disable></div>
+                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="{{data.last_name}}" placeholder="surname" readonly disable></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="{{data.email}}" readonly disable></div>
+                    {% comment %} <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div> {% endcomment %}
+                    {% if address %}
+                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value="{{address.street_address}}" readonly disable></div>
+                    <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{address.street_address}}" readonly disable></div>
+                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{address.zip}}" readonly disable></div>
+                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value="{{address.country}}" readonly disable></div>
+                    {% else %}
+                    <div><h2 class="text-center">Address is not available </h2></div>
+                    {% endif %}
+                </div>
+                <div class="row mt-3">
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div><h1>Somthing Went worng !</h1></div>
+        {% endif %}
+    </div>
+</div>
+</div>
+</div>
+{% endblock content %}
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% endblock extra_scripts %}

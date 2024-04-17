@@ -1,0 +1,8 @@
+<form action="{% url 'user:process_payment' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order_id }}">
+    <input type="hidden" name="amount" value="{{ razorpay_amount }}">
+    <input type="hidden" name="currency" value="{{ currency }}">
+    <!-- Add other necessary input fields -->
+    <button type="submit">Proceed to Payment</button>
+</form>

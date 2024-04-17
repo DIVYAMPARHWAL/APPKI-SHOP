@@ -1,0 +1,152 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block extra_head %}
+<link href="{% static 'css/author.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{object.image.url}}" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h5>
+                                {{object.user}}
+                            </h5>
+                            <h6>
+                                {{object.work}}
+                            </h6>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+
+                                {{object.about_us}}
+                            
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>WORK LINK</p> 
+                    <a href="">Website Link</a><br/>
+        
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br/>
+                    
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{object.user}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{object.email}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Profession</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{object.work}}</p>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Experience</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Expert</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Hourly Rate</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>10$/hr</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Total Projects</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>230</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>English Level</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Expert</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Availability</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>6 months</p>
+                                    </div>
+                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Your Bio</label><br/>
+                                <p>Your detail description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <center>
+            <div class="class mt-5">
+                {% if object.linkedin_url %}
+                    <a href="{{object.linkedin_url}}" target="_blank"><i class="fa-brands fa-linkedin-in fa-xl p-2"  style="color: #000000;"></i></a>
+                {%endif%}
+                {% if object.github_url %}
+                    <a href="{{object.github_url}}" target="_blank"><i class="fa-brands fa-github fa-xl p-2"  style="color: #000000;"></i></a>
+                {%endif%}
+                {% if object.Facebook_url%}
+                    <a href="{{object.Facebook_url}}" target="_blank"><i class="fa-brands fa-facebook-f fa-xl p-2" style="color: #000000;"></i></a>
+                {%endif%}
+                {% if object.instagram_url %}
+                    <a href="{{object.instagram_url}}" target="_blank"><i class="fa-brands fa-instagram fa-xl p-2"  style="color: #000000;"></i></a>
+                {%endif%}
+                {% if object.Youtube_url %}
+                    <a href="{{object.Youtube_url}}" target="_blank"><i class="fa-brands fa-youtube fa-xl p-2" style="color: #000000;"></i></a>
+                {%endif%}
+            </div>
+        </center>
+        </div>
+       
+    </form>           
+</div>
+{% endblock content %}

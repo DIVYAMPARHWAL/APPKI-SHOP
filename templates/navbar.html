@@ -1,0 +1,284 @@
+{% load static %} {% load cart_template_tags %}
+<style>
+	.topbar {
+		background-color: white;
+		color: black !important;
+	}
+	.topbar a:hover{
+		color: black;
+	}
+</style>
+<header class="header1">
+
+<div class="container-menu-header">
+  <!-- Logo -->
+  <a href="/" class="logo text-decoration-none">
+    {% comment %} <p style="color: black"><b style="font-size: 25px">A</b>pki shop</p> {% endcomment %}
+    <img  width="120px" src="{% static "img/logo.png" %}"/>
+  </a>
+
+  <!-- Menu -->
+  <div class="wrap_menu">
+    <nav class="menu">
+      <ul class="main_menu">
+        <li>
+          <a href="/">Home</a>
+        </li>
+
+        <li>
+          <a href="#">Shopping</a>
+          <ul class="sub_menu">
+            {% for cat in category %}
+                <li>
+                  <a href="{% url 'user:category' cat.slug %}">
+                    {{cat.category}}</a>
+                </li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+          </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Header Icon -->
+  <div class="header-icons">
+    {% if request.user.is_authenticated %}
+    <div class="header-wrapicon1">
+      <form class="d-flex" role="search" action="/search">
+        <input
+          class="form-control me-2"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-outline-primary fa-solid fa-magnifying-glass fa-lg"
+          style="width: 4rem; height: 2rem; color: #3abfd9"
+          type="submit"
+        ></button>
+
+        <span class="linedivide1"></span>
+      </form>
+    </div>
+    <a href="{% url 'user:order-summary'%}" class="header-wrapicon2 dis-block">
+      <img
+        src="{% static 'img/icons/icon-header-02.png' %}"
+        class="header-icon1"
+        alt="ICON"
+      />
+      <span class="header-icons-noti">
+        {{ request.user|cart_item_count }}
+      </span>
+    </a>
+
+    {% comment %} <span class="linedivide1"></span>
+    <a href="{% url 'user:logout' %}" class="header-wrapicon3 dis-block">
+      <button class="btn btn-primary">Logout</button>
+    </a> {% endcomment %}
+
+    <span class="linedivide1"></span>
+    <div class="header-wrapicon3">
+      <img
+        src="{% static 'img/icons/icon-header-01.png' %}"
+        class="header-icon1 js-show-header-dropdown"
+        alt="ICON"
+      />
+
+      <!-- Header cart noti -->
+      <div class="header-cart header-dropdown">
+        <ul class="header-cart-wrapitem">
+          
+          <li class="header-cart-item ">
+            <div class="header-cart-item-text">
+              <a href="{% url 'user:order-history' request.user.id %}">
+              Order
+            </a>
+            </div>
+          </li>
+          <li class="header-cart-item">
+            <div class="header-cart-item-text">
+              <a href="{% url 'user:profile' request.user.id %}">
+                Account
+              </a>
+            </div>
+          </li>
+          <li class="header-cart-item">
+            <div class="header-cart-item-text">
+              <a href="{% url 'mypasswordresetview' %}">
+              Change Password
+              </a>
+            </div>
+          </li>
+          <li class="header-cart-item">
+            <div class="header-cart-item-text">
+              <a href="{% url 'user:logout' %}">
+              Logout
+              </a>
+            </div>
+          </li>
+        </div>
+      </div>
+    </div>
+
+    {% else %}
+    <a
+      href="{% url 'user:login' %}"
+      class="header-wrapicon1 dis-block text-decoration-none"
+    >
+      LOGIN
+    </a>
+    <span class="linedivide1"></span>
+    <a
+      href="{% url 'user:register' %}"
+      class="header-wrapicon2 dis-block text-decoration-none"
+    >
+      SIGNUP
+    </a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Header Mobile -->
+<div class="wrap_header_mobile">
+    <!-- Logo moblie -->
+    <a href="/" class="text-decoration-none text-black">
+      <p style="color: black"><b style="font-size: 15px">T</b>ECH LOVE V</p>
+    </a>
+
+    <!-- Button show menu -->
+    <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+            <a href="{% url 'user:order-summary' %}" class="header-wrapicon1 dis-block">
+                
+                <img src="{% static 'img/icons/icon-header-02.png' %}" class="header-icon1 " alt="ICON">
+                <span class="header-icons-noti">{{ request.user|cart_item_count }}</span>
+            </a>
+
+            <span class="linedivide2"></span>
+
+            <div class="header-wrapicon2">
+                
+                <img src="{% static 'img/icons/icon-header-01.png' %}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+
+                <!-- Header cart noti -->
+                <div class="header-cart header-dropdown">
+                  <ul class="header-cart-wrapitem">
+                    
+                    <li class="header-cart-item ">
+                      <div class="header-cart-item-text">
+                        <a href="{% url 'user:order-history' request.user.id %}">
+                        Order
+                      </a>
+                      </div>
+                    </li>
+                    <li class="header-cart-item">
+                      <div class="header-cart-item-text">
+                        <a href="{% url 'user:profile' request.user.id %}">
+                          Account
+                        </a>
+                      </div>
+                    </li>
+                    <li class="header-cart-item">
+                      <div class="header-cart-item-text">
+                        <a href="{% url 'mypasswordresetview' %}">
+                        Change Password
+                        </a>
+                      </div>
+                    </li>
+                  </div>
+                </div>
+            </div>
+
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Menu Mobile -->
+<div class="wrap-side-menu " >
+    <nav class="side-menu ">
+        <ul class="main-menu">
+
+            <li class="item-menu-mobile ">
+                <a href="/">Home</a>
+            </li>
+
+            <li class="item-menu-mobile">
+              <a href="#">Shopping</a>
+              <ul class="sub-menu">
+                {% for cat in category %}
+                <li>
+                  <a href="{% url 'user:category' cat.slug %}">
+                    {{cat.category}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+          </li>
+            <li class="item-menu-mobile ">
+              <a href="{% url 'aboutus' %}">About Us</a>
+          </li>
+
+            {% if request.user.is_authenticated %}
+            <li class="item-menu-mobile">
+                <a href="{% url 'user:logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="item-menu-mobile">
+                <a href="#">Login</a>
+                <ul class="sub-menu">
+                    <li><a href="{% url 'user:login' %}">Login</a></li>
+                    <li><a href="{% url 'user:register' %}">SignUp</a></li>
+                </ul>
+                <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+            </li>
+            {% endif %}
+            
+
+        </ul>
+    </nav>
+</div>
+</header>
+
+{% block extra_scripts %}
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+  crossorigin="anonymous"
+>
+  $(document).ready(function ($) {
+      $('.card').slick({
+          dots: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: false,
+          autoplaySpeed: 2000,
+          arrows: true,
+          responsive: [{
+              breakpoint: 600,
+              settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1
+              }
+          },
+          {
+              breakpoint: 400,
+              settings: {
+                  arrows: false,
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+              }
+          }]
+      });
+  });
+</script>
+{% endblock extra_scripts %}

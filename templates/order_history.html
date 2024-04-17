@@ -1,0 +1,217 @@
+{% extends "base.html" %} {% block extra_head %}
+<style>
+  label {
+    font-weight: 600;
+    user-select: none;
+  }
+
+  h3,
+  .h3 {
+    font-weight: 700;
+  }
+
+  .orders {
+    &__header-label {
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .itemImage {
+    width: 100px;
+    padding-right: 20px;
+    img {
+      max-width: 100%;
+    }
+  }
+</style>
+<style>
+  $base-color: #c1d9e4;
+  $base-dark-color: #3c587c;
+  $accent-color: #1c7ff0;
+  $white-color: #fff;
+  $black-color: #000;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: $base-color;
+    padding: 20px;
+    font-family: "proxima-nova";
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+  }
+
+  .controls,
+  .order-tracker {
+    margin: 10px auto;
+    width: 645px;
+    background-color: $white-color;
+    border-radius: 8px;
+  }
+
+  .order-tracker {
+    padding: 40px;
+  }
+
+  .order-info {
+    display: flex;
+    justify-content: space-between;
+
+    &__number {
+      font-size: 22px;
+      text-transform: uppercase;
+      font-weight: 400;
+
+      a:last-child {
+        color: $accent-color;
+        font-weight: 700;
+      }
+    }
+
+    &__details {
+      &__arrival-date,
+      &__tracking-number {
+        display: block;
+        text-align: right;
+      }
+
+      &__tracking-number {
+        a {
+          font-weight: 700;
+          color: $black-color;
+        }
+      }
+    }
+  }
+
+  .order-status__progress {
+    margin: 45px 0;
+  }
+
+  .order-status__status-info {
+    font-size: 14px;
+  }
+
+  .order-status__status-info ol {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+
+  .order-status__status-info__step {
+    display: inline-flex;
+    padding: 0.1px;
+  }
+
+  .icon {
+    width: 45%;
+    margin-right: 10px;
+  }
+
+  .status {
+    margin-top: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .overlay-check-bubble,
+  .checkmark,
+  .progress-bar {
+    visibility: hidden;
+  }
+
+  .accented {
+    fill: $accent-color;
+    stroke: $accent-color;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="row mb-4">
+    <h1 class="col-10">Order History</h1>
+  </div>
+
+  {% for order in order %}
+  <div class="card mb-4">
+    <div class="m-1">
+      <span class="id"> id :{{order.ref_code}}</span>
+    </div>
+
+    <div class="prevOrderDetails a" style="display: block">
+      {% for item in order.items.all %}
+      <!-- LINE ITEM -->
+      <div class="card-body border-bottom">
+        <div class="item">
+          <div class="d-md-flex justify-content-between">
+            <div class="d-flex flex-grow">
+              <!-- ITEM IMAGE -->
+              <div class="itemImage">
+                <a href="">
+                  <img
+                    style="width: 5.5rem"
+                    src="{{item.item.image.url}}"
+                    alt="{{item.item.title}}"
+                  />
+                </a>
+              </div>
+
+              <!-- ITEM INFO -->
+              <div class="itemInfo flex-grow">
+                <h6>
+                  <a href="">{{ item.item.title}}</a>
+                </h6>
+                <div>
+                  <span>{{ item.item.category }}</span>
+                </div>
+                <div>
+                  <span class="price"
+                    >Rs. {% if item.item.discount_price%} 
+                    {{item.item.discount_price }} 
+                    {%else %} {{item.item.price}} 
+                    {% endif %}
+                  </span>
+                </div>
+                <div>
+                  <span class="quantity"> Qty: {{item.quantity}}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TOOLS -->
+            <div>
+              {% if order.being_delivered%}
+              Order Delivered 
+              {% comment %} {% if order.ordered_date.date <= order_date_pass(order.ordered_date.date) %}
+              <br>
+              <button class="btn btn-primary">refund</button>
+              {%endif %} {% endcomment %}
+              {% else %}
+              Under Process
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %} {% block extra_scripts %}
+{% endblock extra_scripts %}

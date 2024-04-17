@@ -1,0 +1,310 @@
+{% extends "base2.html" %} {% load static %} {% block extra_head %}
+<style>
+  body {
+    background-color: beige;
+    /* background-image: url(background.jpg); */
+    background-size: cover;
+
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  #flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #containerabout {
+    max-width: 750px;
+    margin: 10rem auto;
+    font-family: Roboto;
+  }
+
+  .card {
+    color: black;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 15rem;
+    height: 22rem;
+    border-radius: 0px;
+    overflow: hidden;
+    margin: 20px auto;
+  }
+
+  .card-img {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+  }
+
+  #userimg {
+    width: 100%;
+    height: 17rem;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .card-body {
+    padding: 1rem;
+    margin-top: 265px;
+  }
+
+  h3 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: medium;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+
+  small {
+    opacity: 0.9;
+    margin-bottom: 0;
+    font-size: medium;
+  }
+
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("{% static "img/GETSTARTED.png" %}");
+    background-size: 150%;
+    background-position: center;
+  }
+  
+  /* Add this new wrapper class for the form */
+  .form-container {
+    background: rgba(255, 255, 255, 0.589);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.858);
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+
+form {
+
+    display: flex;
+    flex-direction: column;
+    padding: 15px 30px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+form input,
+form textarea {
+    border: 0;
+    margin: 10px 0;
+    padding: 20px;
+    outline: none;
+    background: #f5f5f5;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px;
+    background: #ff5361;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    margin: 20px auto 0;
+    border-radius: 30px;
+}
+
+  #contact {
+    max-width: 420px;
+    margin: 50px auto;
+  }
+
+  .feedback-input {
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border: 2px solid white;
+    border-radius: 5px;
+    line-height: 22px;
+    background-color: transparent;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+  }
+
+  .feedback-input:focus {
+    border: 2px solid gold;
+  }
+
+  .feedback-input {
+    border: 2px solid white;
+  }
+
+  textarea {
+    height: 150px;
+    line-height: 150%;
+    resize: vertical;
+    color: black;
+  }
+
+  [type="submit"] {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    width: 100%;
+    background: black;
+    border-radius: 2px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+  }
+
+  [type="submit"]:hover {
+    background: gold;
+    color: black;
+  }
+</style>
+{% endblock %} {% block content %}
+
+<div class="container">
+  <img src='{% static "img/logo.png" %}' " alt="Apki shop}" />
+  <p><h3><b>Welcome to Appki Shop, your premier destination for B2B eCommerce solutions tailored to meet your business needs.</b></h3></p>
+  <br>
+  <p><h4>At Appki Shop, we understand the importance of seamless transactions and efficient operations in today's fast-paced business environment. With our expertise in technology and eCommerce, we are dedicated to providing innovative solutions that empower businesses to thrive in the digital marketplace.</h4></p>
+  <br>
+  <p><h2>Our Mission:</h2>
+  <h4>At Appki Shop, our mission is to redefine the B2B eCommerce experience by delivering cutting-edge solutions that streamline procurement processes, enhance collaboration, and drive growth for businesses of all sizes. We are committed to providing a user-friendly platform that fosters meaningful connections between buyers and sellers and facilitates seamless transactions.</h4></p>
+  <br>
+  <p><h2>Who We Are:</h2>
+  <h4>Appki Shop is more than just a B2B eCommerce platform; we are a team of passionate professionals dedicated to helping our clients succeed. With a deep understanding of the challenges and opportunities in the B2B space, our team works tirelessly to develop innovative solutions that meet the evolving needs of our customers.</h4></p>
+  <br>
+  <p><h2>What We Offer:</h2>
+  <h4>At Appki Shop, we offer a comprehensive suite of B2B eCommerce solutions designed to optimize efficiency and drive results. From intuitive ordering systems and customizable catalogs to advanced analytics and supply chain management tools, our platform is designed to help businesses achieve their goals and stay competitive in today's market.</h4></p>
+  <br>
+  <p><h2>Why Choose Us:</h2>
+  <h4>Choosing Appki Shop means choosing reliability, innovation, and exceptional customer service. We are committed to providing our clients with the support and resources they need to succeed. With a focus on continuous improvement and a dedication to exceeding expectations, we are your trusted partner in B2B eCommerce.</h4></p>
+  <br>
+  <p><h2>Join Us:</h2>
+  <h4>Whether you're a buyer looking for a streamlined procurement process or a seller seeking new opportunities for growth, we invite you to join the Appki Shop community. Together, we can unlock the full potential of B2B eCommerce and drive success for your business.</h4></p>
+    <br><br>
+  <p><h2>Contact Us:
+  <br>Address: 3, Institutional Area, Sector-5, Rohini (Near Rithala Metro Station), Delhi-110085
+  <br>Phone Number: (999)-089-504
+  <br>Email: Appkishopb2bsolution@gmail.com
+  <br>Hours: Available 24/7</h2></p>
+  <br><br> 
+  <p><h4>Thank you for choosing Appki Shop. We look forward to serving you and helping you achieve your business objectives in the digital age.</h4></p>
+</div>
+
+<div class="container" id="containerabout">
+  <div style="display: flex; justify-content: center; align-items: center; height: 200px; weight: 1000px;">
+    <h2><b>Look Our Different Seller Patners Details</b></h2>
+  </div>
+  <div class="d-flex" id="flex">
+    {% for user in data %}
+    <div class="card">
+      <div class="card-img">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <a href="{% url 'author' user.slug %}">
+              <img id="userimg" src="{{user.image.url}}" alt="{{user.user}}" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <center>
+        <div class="card-body">
+          <a href="{% url 'author' user.slug %}" class="text-decoration-none">
+            <h3>{{user.user}}</h3>
+          </a>
+          <small>{{user.work}}</small>
+          {% comment %} <br />
+          <small>Frontend Developer</small> {% endcomment %}
+        </div>
+      </center>
+    </div>
+    {%endfor %} 
+  </div>
+</div>
+
+<div class="main-content">
+  <div class="form-container">
+      <h1 style="text-align:center;"><b>SUPPORT PORTAL</b></h1>
+      <br>
+      <div class="contact-info" style="margin-bottom: 20px;">
+          <h2><b>Contact Information</b></h2>
+          <div style="margin-bottom: 10px;">
+              <b>Address: 3, Institutional Area, Sector-5, Rohini (Near Rithala Metro Station), Delhi-110085</b>
+          </div>
+          <div style="margin-bottom: 10px;">
+              <b>Phone Number: (999)-089-504</b> 
+          </div>
+          <div style="margin-bottom: 10px;">
+              <b>Email: Appkishopb2bsolution@gmail.com</b>
+          </div>
+      </div>
+      <hr style="margin: 20px 0;">
+      <br>
+      <h2><b>Send Your Query</b></h2>
+      <form onsubmit="sendEmail(); reset(); return false;">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Email id" required>
+          <input type="text" id="phone" placeholder="Phone Number" required>
+          <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
+          <button type="submit">Send</button>
+      </form>
+  </div>
+</div>
+<script>
+  const from =document.querySelector('form');
+
+function sendEmail(){
+    Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "test9999089504@gmail.com",
+    Password : "81632D9A99D252BCD66A597DFDEE5ABC864F",
+    To : 'test9999089504@gmail.com',
+    From :"test9999089504@gmail.com",
+    Subject : "New Enquiry",
+    Body : "Name: " + document.getElementById("name").value
+       +"<br> Email: " + document.getElementById("email").value
+       +"<br> Email: " + document.getElementById("phone").value
+       +"<br> Message: " + document.getElementById("message").value
+}).then(
+message => alert("Message Sent Succesfully")
+);
+}
+</script>
+{%endblock content%}

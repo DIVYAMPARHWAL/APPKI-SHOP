@@ -1,0 +1,901 @@
+{% extends 'shop/partials/base.html' %}
+{% block head_title %} Product Page {% endblock %}
+{% load crispy_forms_tags %}
+{% block extra_head %}
+<style>
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    body.sticky-footer {
+        margin-bottom: 56px;
+    }
+
+    body.sticky-footer .content-wrapper {
+        min-height: calc(100vh - 56px - 56px);
+    }
+
+    body.fixed-nav {
+        padding-top: 56px;
+    }
+
+    .content-wrapper {
+        min-height: calc(100vh - 56px);
+        padding-top: 1rem;
+    }
+
+    .scroll-to-top {
+        position: fixed;
+        right: 15px;
+        bottom: 3px;
+        display: none;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        color: white;
+        background: rgba(52, 58, 64, 0.5);
+        line-height: 45px;
+    }
+
+    .scroll-to-top:focus,
+    .scroll-to-top:hover {
+        color: white;
+    }
+
+    .scroll-to-top:hover {
+        background: #343a40;
+    }
+
+    .scroll-to-top i {
+        font-weight: 800;
+    }
+
+    .smaller {
+        font-size: 0.7rem;
+    }
+
+    .o-hidden {
+        overflow: hidden !important;
+    }
+
+    .z-0 {
+        z-index: 0;
+    }
+
+    .z-1 {
+        z-index: 1;
+    }
+
+    #mainNav .navbar-collapse {
+        overflow: auto;
+        max-height: 75vh;
+    }
+
+    #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link {
+        cursor: pointer;
+    }
+
+    #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
+        float: right;
+        content: '\f107';
+        font-family: 'FontAwesome';
+    }
+
+    #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse.collapsed:after {
+        content: '\f105';
+    }
+
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level,
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level {
+        padding-left: 0;
+    }
+
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level>li>a,
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level>li>a {
+        display: block;
+        padding: 0.5em 0;
+    }
+
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level>li>a:focus,
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level>li>a:hover,
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level>li>a:focus,
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level>li>a:hover {
+        text-decoration: none;
+    }
+
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level>li>a {
+        padding-left: 1em;
+    }
+
+    #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level>li>a {
+        padding-left: 2em;
+    }
+
+    #mainNav .navbar-collapse .sidenav-toggler {
+        display: none;
+    }
+
+    #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link {
+        position: relative;
+        min-width: 45px;
+    }
+
+    #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link:after {
+        float: right;
+        width: auto;
+        content: '\f105';
+        border: none;
+        font-family: 'FontAwesome';
+    }
+
+    #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link .indicator {
+        position: absolute;
+        top: 5px;
+        left: 21px;
+        font-size: 10px;
+    }
+
+    #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown.show>.nav-link:after {
+        content: '\f107';
+    }
+
+    #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown .dropdown-menu>.dropdown-item>.dropdown-message {
+        overflow: hidden;
+        max-width: none;
+        text-overflow: ellipsis;
+    }
+
+    @media (min-width: 992px) {
+        #mainNav .navbar-brand {
+            width: 250px;
+        }
+
+        #mainNav .navbar-collapse {
+            overflow: visible;
+            max-height: none;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            margin-top: 56px;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item {
+            width: 250px;
+            padding: 0;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item>.nav-link {
+            padding: 1em;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level,
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li,
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li {
+            width: 250px;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a,
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a {
+            padding: 1em;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a {
+            padding-left: 2.75em;
+        }
+
+        #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a {
+            padding-left: 3.75em;
+        }
+
+        #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link {
+            min-width: 0;
+        }
+
+        #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link:after {
+            width: 24px;
+            text-align: center;
+        }
+
+        #mainNav .navbar-collapse .navbar-nav>.nav-item.dropdown .dropdown-menu>.dropdown-item>.dropdown-message {
+            max-width: 300px;
+        }
+    }
+
+    #mainNav.fixed-top .sidenav-toggler {
+        display: none;
+    }
+
+    @media (min-width: 992px) {
+        #mainNav.fixed-top .navbar-sidenav {
+            height: calc(100vh - 112px);
+        }
+
+        #mainNav.fixed-top .sidenav-toggler {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            margin-top: calc(100vh - 56px);
+        }
+
+        #mainNav.fixed-top .sidenav-toggler>.nav-item {
+            width: 250px;
+            padding: 0;
+        }
+
+        #mainNav.fixed-top .sidenav-toggler>.nav-item>.nav-link {
+            padding: 1em;
+        }
+    }
+
+    #mainNav.fixed-top.navbar-dark .sidenav-toggler {
+        background-color: #212529;
+    }
+
+    #mainNav.fixed-top.navbar-dark .sidenav-toggler a i {
+        color: #adb5bd;
+    }
+
+    #mainNav.fixed-top.navbar-light .sidenav-toggler {
+        background-color: #dee2e6;
+    }
+
+    #mainNav.fixed-top.navbar-light .sidenav-toggler a i {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    body.sidenav-toggled #mainNav.fixed-top .sidenav-toggler {
+        overflow-x: hidden;
+        width: 55px;
+    }
+
+    body.sidenav-toggled #mainNav.fixed-top .sidenav-toggler .nav-item,
+    body.sidenav-toggled #mainNav.fixed-top .sidenav-toggler .nav-link {
+        width: 55px !important;
+    }
+
+    body.sidenav-toggled #mainNav.fixed-top #sidenavToggler i {
+        -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: 'FlipH';
+    }
+
+    #mainNav.static-top .sidenav-toggler {
+        display: none;
+    }
+
+    @media (min-width: 992px) {
+        #mainNav.static-top .sidenav-toggler {
+            display: flex;
+        }
+    }
+
+    body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
+        -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: 'FlipH';
+    }
+
+    .content-wrapper {
+        overflow-x: hidden;
+        background: white;
+    }
+
+    @media (min-width: 992px) {
+        .content-wrapper {
+            margin-left: 250px;
+        }
+    }
+
+    #sidenavToggler i {
+        font-weight: 800;
+    }
+
+    .navbar-sidenav-tooltip.show {
+        display: none;
+    }
+
+    @media (min-width: 992px) {
+        body.sidenav-toggled .content-wrapper {
+            margin-left: 55px;
+        }
+    }
+
+    body.sidenav-toggled .navbar-sidenav {
+        width: 55px;
+    }
+
+    body.sidenav-toggled .navbar-sidenav .nav-link-text {
+        display: none;
+    }
+
+    body.sidenav-toggled .navbar-sidenav .nav-item,
+    body.sidenav-toggled .navbar-sidenav .nav-link {
+        width: 55px !important;
+    }
+
+    body.sidenav-toggled .navbar-sidenav .nav-item:after,
+    body.sidenav-toggled .navbar-sidenav .nav-link:after {
+        display: none;
+    }
+
+    body.sidenav-toggled .navbar-sidenav .nav-item {
+        white-space: nowrap;
+    }
+
+    body.sidenav-toggled .navbar-sidenav-tooltip.show {
+        display: flex;
+    }
+
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
+        color: #868e96;
+    }
+
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item>.nav-link {
+        color: #868e96;
+    }
+
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item>.nav-link:hover {
+        color: #adb5bd;
+    }
+
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a,
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a {
+        color: #868e96;
+    }
+
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a:focus,
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a:hover,
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a:focus,
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a:hover {
+        color: #adb5bd;
+    }
+
+    #mainNav.navbar-dark .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link:after {
+        color: #adb5bd;
+    }
+
+    @media (min-width: 992px) {
+        #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
+            background: #343a40;
+        }
+
+        #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
+            color: white !important;
+            background-color: #495057;
+        }
+
+        #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:focus,
+        #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:hover {
+            color: white;
+        }
+
+        #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level,
+        #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level {
+            background: #343a40;
+        }
+    }
+
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item>.nav-link {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item>.nav-link:hover {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a,
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a:focus,
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a:hover,
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a:focus,
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a:hover {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    #mainNav.navbar-light .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link:after {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 992px) {
+        #mainNav.navbar-light .navbar-collapse .navbar-sidenav {
+            background: #f8f9fa;
+        }
+
+        #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a {
+            color: #000 !important;
+            background-color: #e9ecef;
+        }
+
+        #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:focus,
+        #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:hover {
+            color: #000;
+        }
+
+        #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level,
+        #mainNav.navbar-light .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level {
+            background: #f8f9fa;
+        }
+    }
+
+    .card-body-icon {
+        position: absolute;
+        z-index: 0;
+        top: -25px;
+        right: -25px;
+        font-size: 5rem;
+        -webkit-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+
+    @media (min-width: 576px) {
+        .card-columns {
+            column-count: 1;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .card-columns {
+            column-count: 2;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .card-columns {
+            column-count: 2;
+        }
+    }
+
+    .card-login {
+        max-width: 25rem;
+    }
+
+    .card-register {
+        max-width: 40rem;
+    }
+
+    footer.sticky-footer {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 56px;
+        background-color: #e9ecef;
+        line-height: 55px;
+    }
+
+    @media (min-width: 992px) {
+        footer.sticky-footer {
+            width: calc(100% - 250px);
+        }
+    }
+
+    @media (min-width: 992px) {
+        body.sidenav-toggled footer.sticky-footer {
+            width: calc(100% - 55px);
+        }
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+{% comment %} <div class="row my-4">
+    <div class="col-md-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="card ms-2">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="card-body mt-3 text-center">
+                    <input name="company" value="{{company}} " type="text" readonly="True"><br>
+                    <label class="mt-2">Add New Product</label>
+                    <div class="form-floating  mb-3 col-10 mt-4">
+                        {{form.title.errors}}
+                        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="title">
+                        <label for="floatingInput" class="ms-2">Name</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.quantity.errors}}
+                        <input type="number" class="form-control" id="floatingInput" placeholder="text" name="quantity">
+                        <label for="floatingInput" class="ms-2">Quantity</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.brand_Name.errors}}
+                        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="brand_Name">
+                        <label for="floatingInput" class="ms-2">Brand Name</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.price.errors}}
+                        <input type="number" class="form-control" id="floatingInput" placeholder="text" name="price">
+                        <label for="floatingInput" class="ms-2">Price</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.discount_price.errors}}
+                        <input type="number" class="form-control" id="floatingInput" placeholder="text" name="price">
+                        <label for="floatingInput" class="ms-2">Discounted Price</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.category.errors}}
+                        {{form.category}}
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.subcategory.errors}}
+                        {{form.subcategory}}
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.label.errors}}
+                        {{form.label}}
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.slug.errors}}
+                        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="slug">
+                        <label for="floatingInput" class="ms-2">Slug</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.description_short.errors}}
+                        <input type="text" class="form-control" id="floatingInput" placeholder="text"
+                            name="description_short">
+                        <label for="floatingInput" class="ms-2">Short Description</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.description_long.errors}}
+                        <textarea class="form-control" id="floatingInput" placeholder="text"
+                            name="description_long"></textarea>
+                        <label for="floatingInput" class="ms-2">Lone Description</label>
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.image.errors}}
+                        {{form.image}}
+                    </div>
+                    <div class="form-floating mb-3 col-10">
+                        {{form.is_active.errors}}
+                        {{form.is_active.label}}<br>
+                        {{form.is_active}}
+                    </div>
+                    <div class="d-grid gap-2 col-10 mx-auto mt-5">
+                        <input type="submit" class="btn btn-outline-danger w-75" value="Add">
+                        <h6 class="text-center">-------------------- or ---------------------</h6>
+                        <i class="fa-brands fa-google text-center" style="color: #000000;"><i
+                                class="fa-brands fa-facebook ms-3" style="color: #000000;"></i></i>
+
+                    </div>
+                    {{form.errors}}
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product %}
+                <tr>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm mr-2"
+                            href="{% url 'shop:dashboard-products-edit' product.id %}">Edit</a>
+                        <a class="btn btn-danger btn-sm ml-2"
+                            href="{% url 'shop:dashboard-products-delete' product.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div> {% endcomment %}
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+    <!-- <div class="content-wrapper"> -->
+    <div class="container">
+        <div class="row">
+            {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+            {% include 'shop/partials/topside.html' %}
+            {% else %}
+            {% include 'shop/partials/topside2.html' %}
+            {% endif %}
+
+        </div>
+        <!-- Area Chart Example-->
+
+        <div class="row">
+            <div class="col-4 mt-5 mb-5 card" id="card">
+                {% comment %} {% include 'shop/dashboard/products_add.html' %} {% endcomment %}
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {% include 'shop/dashboard/products_add.html'%}
+                    <input class="btn btn-info" type="submit" value="Add">
+                </form>
+            </div>
+
+            <!-- Example DataTables Card-->
+            <div class="col-8 mt-5">
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Data Table Example
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Active</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for product in product %}
+                                    <tr>
+                                        <td>{{ product.title }}</td>
+                                        <td>
+                                            {% if product.discout_price%}
+                                            {{ product.discout_price }}
+                                            {% else %}
+                                            {{product.price}}
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ product.quantity}}</td>
+                                        <td>{{product.is_active}}</td>
+                                        <td class="col-md-1">
+                                            <a href="{% url 'shop:dashboard-products-edit' product.id %}">
+                                                <button type="button" class="btn btn-primary">Update</button>
+                                            </a>
+                                            <a href="{% url 'shop:dashboard-products-delete' product.id %} ">
+                                                <button type="button" class="btn btn-danger">Delete</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted">Updated When you refresh</div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid-->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+    // Chart.js scripts
+    // -- Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#292b2c';
+    // -- Area Chart Example
+    var ctx = document.getElementById("myAreaChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+            datasets: [{
+                label: "Sessions",
+                lineTension: 0.3,
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                pointHitRadius: 20,
+                pointBorderWidth: 2,
+                data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'date'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 7
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 40000,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, .125)",
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+    // -- Bar Chart Example
+    var ctx = document.getElementById("myBarChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June"],
+            datasets: [{
+                label: "Revenue",
+                backgroundColor: "rgba(2,117,216,1)",
+                borderColor: "rgba(2,117,216,1)",
+                data: [4215, 5312, 6251, 7841, 9821, 14984],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 6
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 15000,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+    // -- Pie Chart Example
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Blue", "Red", "Yellow", "Green"],
+            datasets: [{
+                data: [12.21, 15.58, 11.25, 8.32],
+                backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+            }],
+        },
+    });
+
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+
+    (function ($) {
+        "use strict"; // Start of use strict
+        // Configure tooltips for collapsed side navigation
+        $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
+            template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+        })
+        // Toggle the side navigation
+        $("#sidenavToggler").click(function (e) {
+            e.preventDefault();
+            $("body").toggleClass("sidenav-toggled");
+            $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
+            $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
+        });
+        // Force the toggled class to be removed when a collapsible nav link is clicked
+        $(".navbar-sidenav .nav-link-collapse").click(function (e) {
+            e.preventDefault();
+            $("body").removeClass("sidenav-toggled");
+        });
+        // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+        $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function (e) {
+            var e0 = e.originalEvent,
+                delta = e0.wheelDelta || -e0.detail;
+            this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+            e.preventDefault();
+        });
+        // Scroll to top button appear
+        $(document).scroll(function () {
+            var scrollDistance = $(this).scrollTop();
+            if (scrollDistance > 100) {
+                $('.scroll-to-top').fadeIn();
+            } else {
+                $('.scroll-to-top').fadeOut();
+            }
+        });
+        // Configure tooltips globally
+        $('[data-toggle="tooltip"]').tooltip()
+        // Smooth scrolling using jQuery easing
+        $(document).on('click', 'a.scroll-to-top', function (event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: ($($anchor.attr('href')).offset().top)
+            }, 1000, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    })(jQuery); // End of use strict
+</script>
+{% endblock extra_scripts %}

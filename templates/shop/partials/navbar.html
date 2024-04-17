@@ -1,0 +1,263 @@
+{% load static %}
+{%comment %}
+<nav class="navbar">
+    <div class="container-fluid mt-2">
+        <a href=""class="navbar-brand ms-4"><img src="{% static "img/logo.png" %}/></a>
+        <div class="d-grid d-flex justify-content-md-end me-3">
+            <a href="{% url 'shop:account_login' %}"></a><button type="button" class="btn text-primary me-1"> LOG IN </button></a>
+            <a href="{% url 'shop:account_signup' %}"></a><button type="button" class="btn text-danger ms-1"> SIGN IN </button></a>
+        </div>
+    </div>
+</nav>
+{% endcomment %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid mt-2">
+        <a href="{% url 'shop:shop-index' %}" class="navbar-brand ms-4"><img height="50px" weight="80px" src='{% static "img/logo.png" %}'/></a>
+         <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+             <!-- <li class="nav-item active">
+              <a class="nav-link waves-effect" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/checkout">
+                Checkout</a>
+            </li>  -->
+          </ul>
+    
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'shop:account_logout' %}">
+                <button type="button" class="btn text-warning"> LOGOUT </button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="header-wrapicon1 mt-3 me-3">
+                <img
+                  src="{% static 'img/icons/icon-header-01.png' %}"
+                  class="header-icon1 js-show-header-dropdown"
+                  alt="ICON"
+                />
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'shop:account_login' %}">
+                <button type="button" class="btn text-primary"> LOGIN </button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'shop:account_signup' %}">
+                <button type="button" class="btn text-danger"> SIGNIN </button>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          
+        </div>
+    </div>
+  
+  </nav>
+{% comment %} <style>
+    .topbar {
+      background-color: white;
+      color: black !important;
+    }
+    .topbar a:hover{
+      color: black;
+    }
+  </style>
+  <header class="header1">
+  
+  <div class="container-menu-header">
+    <!-- Logo -->
+    <a href="/" class="logo text-decoration-none">
+      <p style="color: black"><b style="font-size: 25px">T</b>ECH LOVE V</p>
+    </a>
+  
+    <!-- Menu -->
+    <div class="wrap_menu">
+      <nav class="menu">
+        <ul class="main_menu">
+          <li>
+            <a href="/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Header Icon -->
+    <div class="header-icons">
+      {% if request.user.is_authenticated %}
+
+      <span class="linedivide1"></span>
+      <a href="{% url 'shop:account_logout' %}" class="header-wrapicon1 dis-block">
+        <button class="btn btn-primary">Logout</button>
+      </a>
+  
+      <span class="linedivide1"></span>
+      <div class="header-wrapicon2">
+        <img
+          src="{% static 'img/icons/icon-header-01.png' %}"
+          class="header-icon1 js-show-header-dropdown"
+          alt="ICON"
+        />
+  
+        <!-- Header cart noti -->
+        <div class="header-cart header-dropdown">
+          <ul class="header-cart-wrapitem">
+            
+            <li class="header-cart-item">
+              <div class="header-cart-item-text">
+                Profile
+              </div>
+            </li>
+            <li class="header-cart-item">
+              <div class="header-cart-item-text">
+                <a href="{% url 'mypasswordresetview' %}">
+                Change Password
+                </a>
+              </div>
+            </li>
+          </div>
+        </div>
+      </div>
+  
+      {% else %}
+      <a
+        href="{% url 'shop:account_login' %}"
+        class="header-wrapicon1 dis-block text-decoration-none"
+      >
+        LOGIN
+      </a>
+      <span class="linedivide1"></span>
+      <a
+        href="{% url 'shop:account_signup' %}"
+        class="header-wrapicon2 dis-block text-decoration-none"
+      >
+        SIGNUP
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  
+  <!-- Header Mobile -->
+  <div class="wrap_header_mobile">
+      <!-- Logo moblie -->
+      <a href="/" class="text-decoration-none text-black">
+          Tech Love V
+      </a>
+  
+      <!-- Button show menu -->
+      <div class="btn-show-menu">
+          <!-- Header Icon mobile -->
+          <div class="header-icons-mobile">
+
+              <span class="linedivide2"></span>
+  
+              <div class="header-wrapicon2">
+                  
+                  <img src="{% static 'img/icons/icon-header-01.png' %}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+  
+                  <!-- Header cart noti -->
+                  <div class="header-cart header-dropdown">
+                    <ul class="header-cart-wrapitem">
+                      
+                      <li class="header-cart-item">
+                        <div class="header-cart-item-text">
+                          <a href="">
+                            Profile
+                            </a>
+                        </div>
+                      </li>
+                      <li class="header-cart-item">
+                        <div class="header-cart-item-text">
+                          <a href="{% url 'mypasswordresetview' %}">
+                            Change Password
+                            </a>
+                        </div>
+                      </li>
+                    </div>
+                  </div>
+              </div>
+  
+          <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+              <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+              </span>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Menu Mobile -->
+  <div class="wrap-side-menu " >
+      <nav class="side-menu ">
+          <ul class="main-menu">
+  
+              <li class="item-menu-mobile ">
+                  <a href="/">Dashboard</a>
+              </li>
+  
+              {% if request.user.is_authenticated %}
+              <li class="item-menu-mobile">
+                  <a href="{% url 'shop:account_logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="item-menu-mobile">
+                  <a href="#">Login</a>
+                  <ul class="sub-menu">
+                      <li><a href="{% url 'shop:account_login' %}">Login</a></li>
+                      <li><a href="{% url 'shop:account_signup' %}">SignUp</a></li>
+                  </ul>
+                  <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+              </li>
+              {% endif %}
+  
+          </ul>
+      </nav>
+  </div>
+  </header>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+  crossorigin="anonymous">
+  $(document).ready(function ($) {
+      $('.card').slick({
+          dots: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: false,
+          autoplaySpeed: 2000,
+          arrows: true,
+          responsive: [{
+              breakpoint: 600,
+              settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1
+              }
+          },
+          {
+              breakpoint: 400,
+              settings: {
+                  arrows: false,
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+              }
+          }]
+      });
+  });
+</script> {% endcomment %}

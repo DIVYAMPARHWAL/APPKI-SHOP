@@ -1,0 +1,150 @@
+{% load crispy_forms_tags %}
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+   
+    <!-- <div class="content-wrapper"> -->
+        <div class="container">
+            <div class="row">
+                {% include 'shop/partials/topside2.html' %}
+            </div>
+            <!-- Area Chart Example-->
+           
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Example Bar Chart Card-->
+                   
+
+                    <div class="col-lg-4">
+                        <!-- Example Pie Chart Card-->
+                        
+                        <!-- Example Notifications Card-->
+
+                    </div>
+                </div>
+                <!-- Example DataTables Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Order's Table
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Customer</th>
+                                        <th>item</th>
+                                        <th>Quantity</th>
+                                        <th>price</th>
+                                        <th>status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for order in order %}
+                                    <tr>
+                                        {% for item in order.items.all %}
+                                        {% if item.item.company == company %}
+                                        <td><a href="{{ order.get_absolute_url }}">{{forloop.parentloop.counter}}. {{ order.user.username }} </td>
+                    
+                    <td>{{ item.item.title }}</td>
+                    <td>
+                        {% if item.item.discount_price%}
+                        {{ item.item.discount_price }}
+                        {%else %}
+                        {{item.item.price}}
+                        {% endif %}
+                    </td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ order.being_delivered }}</td>
+                </tr>
+                {% endif %}
+                    {% endfor %}
+                    
+                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted">Updated When you refresh</div>
+                </div>
+            </div>
+            <!-- /.container-fluid-->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</body>
+<script>
+
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+
+    (function ($) {
+        "use strict"; // Start of use strict
+        // Configure tooltips for collapsed side navigation
+        $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
+            template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+        })
+        // Toggle the side navigation
+        $("#sidenavToggler").click(function (e) {
+            e.preventDefault();
+            $("body").toggleClass("sidenav-toggled");
+            $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
+            $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
+        });
+        // Force the toggled class to be removed when a collapsible nav link is clicked
+        $(".navbar-sidenav .nav-link-collapse").click(function (e) {
+            e.preventDefault();
+            $("body").removeClass("sidenav-toggled");
+        });
+        // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+        $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function (e) {
+            var e0 = e.originalEvent,
+                delta = e0.wheelDelta || -e0.detail;
+            this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+            e.preventDefault();
+        });
+        // Scroll to top button appear
+        $(document).scroll(function () {
+            var scrollDistance = $(this).scrollTop();
+            if (scrollDistance > 100) {
+                $('.scroll-to-top').fadeIn();
+            } else {
+                $('.scroll-to-top').fadeOut();
+            }
+        });
+        // Configure tooltips globally
+        $('[data-toggle="tooltip"]').tooltip()
+        // Smooth scrolling using jQuery easing
+        $(document).on('click', 'a.scroll-to-top', function (event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: ($($anchor.attr('href')).offset().top)
+            }, 1000, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    })(jQuery); // End of use strict
+</script>

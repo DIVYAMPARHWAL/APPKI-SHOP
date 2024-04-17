@@ -1,0 +1,47 @@
+{% extends 'shop/partials/base.html' %}
+{% block title %}Customer Detail Page{% endblock %}
+
+
+{% block content %}
+{% include 'shop/partials/topside.html' %}
+<div class="row my-4">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                Customer Detail Page
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                            <span class="h4">Porfile Information</span class="h4">
+                            <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ customers.user.username }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ customers.user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Salary</th>
+                                <td>{{ customers.salary }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-thumbnail" src="{{ customers.profile.image.url }}" alt="profile-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

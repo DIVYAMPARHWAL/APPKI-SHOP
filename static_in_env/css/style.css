@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed&display=swap');
+
+
+#img{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  
+}
+
+#signup{
+    background-size: cover;
+    background-image: url(signup.jpg);
+}
+
+.body .h5{
+    font-family: 'Asap Condensed', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+#logoname{
+    color: rgb(216, 4, 4);
+}
+.nav-link{
+    color: rgb(216, 4, 4) !important;
+
+}
+.input-border-color :hover{
+
+    background-color: rgb(216, 4, 4) !important;
+}
+
+
+
+  .home-demo h2 {
+    color: #FFF;
+    text-align: center;
+    padding: 5rem 0;
+    margin: 0;
+    font-style: italic;
+    font-weight: 300;
+   
+  }

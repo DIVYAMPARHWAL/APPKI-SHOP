@@ -1,0 +1,18 @@
+{% extends "shop/partials/base.html" %}
+
+{% block content %}
+<div class="mt-4">
+
+    {{object.user.username}}
+</div>
+{% for items in object.items.all %}
+{{items.item.title}}
+{% if items.item.price %}
+{{ items.item.price }}
+{% else %}
+{{ items.item.discount_price }}
+{% endif %}
+{{items.quantity}}
+{{items.get_total_item_price}}
+{% endfor %}
+{% endblock content %}

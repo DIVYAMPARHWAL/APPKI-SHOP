@@ -1,0 +1,76 @@
+{% extends "shop/partials/base.html" %}
+{% load static %}
+{% block head_title %}Shop | Signup Page{% endblock %}
+{% block content %}
+<!-- sign up form -->
+<div class="container d-flex justify-content-center mt-4 pb-4">
+    <div class="card mt-4" style="max-width: 1200px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{% static 'img/overlays/signup.jpg' %}" class="img-fluid" alt="..." id="signup">
+            </div>
+            <div class="col-md-8" id="img">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="card-body mt-3 text-center">
+                        <h5 class="card-title mt-2 text-center">SIGN IN</h5>
+                        <center>
+                            <div class="form-floating  mb-3 col-6 mt-4">
+                                {{form.first_name.errors}}
+                                <input type="text" class="form-control" id="floatingInput" placeholder="text" name="first_name">
+                                <label for="floatingInput" class="ms-2">First Name</label>
+                                
+                            </div>
+                            <div class="form-floating  mb-3 col-6">
+                                {{form.last_name.errors}}
+                                <input type="text" class="form-control" id="floatingInput" placeholder="text" name="last_name">
+                                <label for="floatingInput" class="ms-2">Last Name</label>
+                                
+                            </div>
+                            <div class="form-floating  mb-3 col-6">
+                                {{form.username.errors}}
+                                <input type="text" class="form-control" id="floatingInput" placeholder="text" name="username">
+                                <label for="floatingInput" class="ms-2">Username</label>
+                                
+                            </div>
+                            <div class="form-floating  mb-3 col-6">
+                                {{form.email.errors}}
+                                <input type="text" class="form-control" id="floatingInput" placeholder="text" name="email">
+                                <label for="floatingInput" class="ms-2">Email</label>
+                            </div>
+                            <div class="form-floating mb-3 col-6">
+                                {{form.password1.errors}}
+                                <input type="text" class="form-control" id="floatingInput" placeholder="text" name="password1">
+                                <label for="floatingInput" class="ms-2">Password</label>
+                            </div>
+                            <div class="form-floating mb-3 col-6">
+                                {{form.password2.errors}}
+                                <input type="password" class="form-control" id="floatingInput" placeholder="text" name="password2">
+                                <label for="floatingInput" class="ms-2">Confirm Password</label>
+                            </div>
+                            <div class="form-floating mb-3 col-6">
+                                {{form.company_name.errors}}
+                                <input type="text" class="form-control" id="floatingInput" placeholder="text" name="company_name">
+                                <label for="floatingInput" class="ms-2">Company Name</label>
+                            </div>
+                            
+                        </center>
+                        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                            <input type="submit" class="btn btn-outline-danger w-75" name="Create User" value="SIGNUP">
+                            <h6 class="text-center">-------------------- or ---------------------</h6>
+                            <i class="fa-brands fa-google text-center" style="color: #000000;"><i
+                                    class="fa-brands fa-facebook ms-3" style="color: #000000;"></i></i>
+    
+                        </div>
+                        {{form.errors}}
+    
+                    </div>
+                </form>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end sign up form -->
+{% endblock content %}
+

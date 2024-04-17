@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>You are not authorized to view this page </h1>
+<hr>
+<a href="{% url 'shop:account_login' %}">
+<button class="btn btn-primary btn-md my-0 p">login as employee</button>
+</a>
+<a href="{% url 'user:login' %}">
+    <button class="btn btn-primary btn-md my-0 p">login as Customer</button>
+</a>
+
+<button class="btn btn-primary btn-md my-0 p">login as Delivery agent</button>
+
+<a href="{% url 'shop:account_login' %}">
+    <button class="btn btn-primary btn-md my-0 p">login as Shop Owner</button>
+</a>
+
+{% endblock content %}

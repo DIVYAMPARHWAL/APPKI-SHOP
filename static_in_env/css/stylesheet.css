@@ -1,0 +1,166 @@
+.d-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container{
+  max-width: 750px;
+  margin: 10rem auto;
+  font-family: Roboto;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+}
+.card {
+  color: black;
+  background: #ffbb33;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 15rem;
+  height: 22rem;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 20px auto;
+}
+.card:hover {
+  color: black;
+  background: #ffbb33;
+  box-shadow: 0 0 20px rgb(0 0 0);
+  width: 15rem;
+  height: 22rem;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+.card-img {
+  perspective: 1500px;
+}
+img {
+  width: 100%;
+  height: 17rem;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card-body {
+  padding: 1rem;
+  margin-top: 17rem;
+}
+i {
+  color: black;
+}
+h3 {
+  margin: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: medium;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+small {
+  opacity: 0.9;
+  margin-bottom: 0;
+  font-size: small;
+}
+
+p {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 70px;
+  margin-top: 300px;
+  text-transform: uppercase;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+p:hover {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 70px;
+  margin-top: 300px;
+  text-transform: uppercase;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+form {
+  max-width: 420px;
+  margin: 100px auto;
+  margin-top: 20px;
+}
+
+.feedback-input {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border: 3px solid black;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.feedback-input:focus {
+  color: black;
+  border: 5px solid #ffbb33;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize: vertical;
+}
+
+[type="submit"] {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  width: 100%;
+  background: black;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+
+[type="submit"]:hover {
+  background: #ffbb33;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

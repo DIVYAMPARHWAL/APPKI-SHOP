@@ -1,0 +1,54 @@
+<div class="card-body mt-3 text-center">
+    <input value="{{company.name}}" name="company" type="text" disabled readonly >
+    <div class="form-floating  mb-3 col-10 mt-4">
+        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="title">
+        <label for="floatingInput" class="ms-2">Name</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        <input type="number" class="form-control" id="floatingInput" placeholder="text" name="quantity">
+        <label for="floatingInput" class="ms-2">Quantity</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="brand_Name">
+        <label for="floatingInput" class="ms-2">Brand Name</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        <input type="number" class="form-control" id="floatingInput" placeholder="text" name="price">
+        <label for="floatingInput" class="ms-2">Price</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        <input type="number" class="form-control" id="floatingInput" placeholder="text" name="price">
+        <label for="floatingInput" class="ms-2">Discounted Price</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        {{form.category}}
+    </div>
+    <div class="form-floating mb-3 col-10">
+        {{form.subcategory}}
+    </div>
+    <div class="form-floating mb-3 col-10">
+        {{form.label}}
+    </div>
+    <div class="form-floating mb-3 col-10">
+        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="slug">
+        <label for="floatingInput" class="ms-2">Slug</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="description_short">
+        <label for="floatingInput" class="ms-2">Short Description</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        <textarea class="form-control" id="floatingInput" placeholder="text" name="description_long"></textarea>
+        <label for="floatingInput" class="ms-2">Lone Description</label>
+    </div>
+    <div class="form-floating mb-3 col-10">
+        {{form.image.label}}
+        {{form.image}}
+    </div>
+    <div class="form-floating mb-3 col-10">
+        {{form.is_active.label}}<br>
+        {{form.is_active}}
+    </div>
+    {{form.errors}}
+
+</div>
