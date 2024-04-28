@@ -1,48 +1,109 @@
-<footer class="bg-gray page-footer text-center font-small mt-4 wow fadeIn black-text">
+{% load static %} 
+<style>
+footer {
+  margin-top: 0;
+  background-color: #b3aa90;
+  color: #000;
+  padding: 25px 25px;
+}
 
-    <hr class="my-4">
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: start; 
+}
 
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://m.facebook.com/TechLoveV/" target="_blank">
-        <i class="fab fa-facebook-f mr-3 black-text"></i>
-      </a>
+.footer-section {
+  flex: 1;
+  margin-right: 20px;
+}
 
-      <a href="https://mobile.twitter.com/eshaanmanchanda" target="_blank">
-        <i class="fab fa-twitter mr-3 black-text"></i>
-      </a>
+.footer-logo img {
+  width: 280px;
+  height: 85px;
+}
 
-      <a href="https://www.youtube.com/c/TechLovev_212subs" target="_blank">
-        <i class="fab fa-youtube mr-3 black-text"></i>
-      </a>
+.footer-links a {
+  display: block; 
+  color: #000; 
+  margin-bottom: 10px; 
+}
 
-      {% comment %} <a href="#" target="_blank">
-        <i class="fab fa-google-plus-g mr-3 black-text"></i>
-      </a> {% endcomment %}
+.social-icons a {
+  margin-right: 10px;
+}
 
-      {% comment %} <a href="#" target="_blank">
-        <i class="fab fa-dribbble mr-3 black-text"></i>
-      </a> {% endcomment %}
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
 
-      {% comment %} <a href="#" target="_blank">
-        <i class="fab fa-pinterest mr-3 black-text"></i>
-      </a> {% endcomment %}
+.contact-us h2,
+.follow-us h2 {
+  color: #000;
+}
 
-      <a href="https://github.com/EshaanManchanda" target="_blank">
-        <i class="fab fa-github mr-3 black-text"></i>
-      </a>
+.contact-us p,
+.follow-us p {
+  color: #000; 
+}
 
-      {% comment %} <a href="#" target="_blank">
-        <i class="fab fa-codepen mr-3 black-text"></i>
-      </a> {% endcomment %}
+.contact-us b,
+.follow-us b {
+  font-weight: normal; 
+}
+
+.contact-us,
+.follow-us {
+  margin-bottom: 20px;
+}
+
+.footer-logo, .footer-links, .contact-us, .follow-us {
+  margin-bottom: 10px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+  color: #000; 
+}
+</style>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section footer-left">
+      <div class="footer-logo">
+        <img src='{% static "img/logo.png" %}' alt="Appki shop" />
+      </div>
     </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3 black-text">
-      © 2023 Copyright:
-      <a href="https://www.youtube.com/c/TechLovev_212subs"  target="_blank"> TechLoveV.com </a>
+    <div class="footer-section footer-center">
+      <div class="footer-links">
+        <h2>QUICK LINKS</h2> 
+        <a href="/aboutus.html">About Us</a>
+        <a href="/support.html">Support</a>
+        <a href="/benefits.html">Benefits of Joining Us</a>
+        <a href="/terms.html">Terms and Privacy Policy</a>
+      </div>
     </div>
-    <!--/.Copyright-->
-
-  </footer>
+    <div class="footer-section footer-right">
+      <div class="contact-us">
+        <h2>Contact Us</h2>
+        <p>Address: 3, Institutional Area, Sector-5, Rohini (Near Rithala Metro Station), Delhi-110085</p>
+        <p>Phone Number: (999)-089-504</p>
+        <p>Email: Appkishopb2bsolution@gmail.com</p>
+        <p>Hours: Available 24/7</p>
+      </div>
+      <div class="follow-us">
+        <h2>Follow Us</h2>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/"><img src='{% static "img/fb_logo.png" %}' alt="Facebook" /></a>
+          <a href="https://twitter.com/?lang=en"><img src='{% static "img/x_logo.png" %}' alt="Twitter" /></a>
+          <a href="https://www.youtube.com/"><img src='{% static "img/yt_logo.png" %}' alt="YouTube" /></a>
+          <a href="https://www.instagram.com/"><img src='{% static "img/insta_logo.png" %}' alt="Instagram" /></a>
+          <a href="https://in.linkedin.com/"><img src='{% static "img/linkedin_logo.png" %}' alt="LinkedIn" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">© 2024 APPKI SHOP. All rights reserved.</div>
+</footer>

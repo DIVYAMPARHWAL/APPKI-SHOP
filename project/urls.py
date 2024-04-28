@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('delivery/', include('delivery.urls', namespace='delivery')),
     path('shop/', include('shop.urls', namespace='shop')),
+    path('sellerpatners/', sellerpatners, name='sellerpatners'),
     path('aboutus/', aboutus, name='aboutus'),
     path('aboutus/<slug>', Author.as_view(), name='author'),
     path('', include('user.urls', namespace='user')),

@@ -648,6 +648,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -2054,7 +2070,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-xi*!&#k=ad=s#ok^c!3c1e4s3%!&tla7l$z)s46k%n5k8kji$$'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\nSECRET_KEY = 'django-insecure-xi*!&#k=ad=s#ok^c!3c1e4s3%!&tla7l$z)s46k%n5k8kji$$'\nDEBUG = True\nALLOWED_HOSTS = []\nINSTALLED_APPS = [\n    'jazzmin',\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2063,7 +2079,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-xi*!&#k=ad=s#ok^c!3c1e4s3%!&tla7l$z)s46k%n5k8kji$$'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'jazzmin',\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-xi*!&#k=ad=s#ok^c!3c1e4s3%!&tla7l$z)s46k%n5k8kji$$'\nDEBUG = True\nALLOWED_HOSTS = []\nINSTALLED_APPS = [\n    'jazzmin',\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2072,7 +2088,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'jazzmin',\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\nINSTALLED_APPS = [\n    'jazzmin',\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2081,7 +2097,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'jazzmin',\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "ALLOWED_HOSTS = []\nINSTALLED_APPS = [\n    'jazzmin',\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    # 'razorpay-python',",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2144,7 +2160,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'project.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.1/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation",
+        "peekOfCode": "WSGI_APPLICATION = 'project.wsgi.application'\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2153,7 +2169,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2171,7 +2187,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\n# Static files (CSS, JavaScript, Images)\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2180,7 +2196,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\n# Static files (CSS, JavaScript, Images)\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2189,7 +2205,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\n# Static files (CSS, JavaScript, Images)\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2198,7 +2214,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\n# Static files (CSS, JavaScript, Images)\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\n# Default primary key field type",
+        "peekOfCode": "USE_TZ = True\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2207,7 +2223,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587",
+        "peekOfCode": "STATIC_URL = '/static/'\nMEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2216,7 +2232,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "MEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True",
+        "peekOfCode": "MEDIA_URL = '/media/'\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2225,7 +2241,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')",
+        "peekOfCode": "STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2234,7 +2250,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')",
+        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2243,7 +2259,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {",
+        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2252,7 +2268,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Tech Love v Admin\",\n    \"site_header\": \"Tech Love V\",\n    \"site_brand\": \"Tech Love V\",",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",\n    \"site_brand\": \"Appki Shop\",",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2261,7 +2277,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "EMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Tech Love v Admin\",\n    \"site_header\": \"Tech Love V\",\n    \"site_brand\": \"Tech Love V\",\n    # \"site_logo\": \"img/svg/icon.svg\",",
+        "peekOfCode": "EMAIL_HOST = 'smtp.gmail.com'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",\n    \"site_brand\": \"Appki Shop\",\n    #\"site_logo\": \"img/logo.png\",",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2270,7 +2286,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "EMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Tech Love v Admin\",\n    \"site_header\": \"Tech Love V\",\n    \"site_brand\": \"Tech Love V\",\n    # \"site_logo\": \"img/svg/icon.svg\",\n    \"login_logo\": None,",
+        "peekOfCode": "EMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",\n    \"site_brand\": \"Appki Shop\",\n    #\"site_logo\": \"img/logo.png\",\n    \"login_logo\": None,",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2279,7 +2295,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "EMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Tech Love v Admin\",\n    \"site_header\": \"Tech Love V\",\n    \"site_brand\": \"Tech Love V\",\n    # \"site_logo\": \"img/svg/icon.svg\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)",
+        "peekOfCode": "EMAIL_USE_TLS = True\nEMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",\n    \"site_brand\": \"Appki Shop\",\n    #\"site_logo\": \"img/logo.png\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2288,7 +2304,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "EMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Tech Love v Admin\",\n    \"site_header\": \"Tech Love V\",\n    \"site_brand\": \"Tech Love V\",\n    # \"site_logo\": \"img/svg/icon.svg\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)\n    \"login_logo_dark\": None,",
+        "peekOfCode": "EMAIL_HOST_USER = config('EMAIL_US')\nEMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",\n    \"site_brand\": \"Appki Shop\",\n    #\"site_logo\": \"img/logo.png\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)\n    \"login_logo_dark\": None,",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2297,7 +2313,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "EMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Tech Love v Admin\",\n    \"site_header\": \"Tech Love V\",\n    \"site_brand\": \"Tech Love V\",\n    # \"site_logo\": \"img/svg/icon.svg\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)\n    \"login_logo_dark\": None,\n    # CSS classes that are applied to the logo above",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = config('PASSWORD_US')\nJAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",\n    \"site_brand\": \"Appki Shop\",\n    #\"site_logo\": \"img/logo.png\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)\n    \"login_logo_dark\": None,\n    # CSS classes that are applied to the logo above",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2306,7 +2322,7 @@
         "kind": 5,
         "importPath": "project.settings",
         "description": "project.settings",
-        "peekOfCode": "JAZZMIN_SETTINGS = {\n    \"site_title\": \"Tech Love v Admin\",\n    \"site_header\": \"Tech Love V\",\n    \"site_brand\": \"Tech Love V\",\n    # \"site_logo\": \"img/svg/icon.svg\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)\n    \"login_logo_dark\": None,\n    # CSS classes that are applied to the logo above\n    \"site_logo_classes\": \"img-circle\",",
+        "peekOfCode": "JAZZMIN_SETTINGS = {\n    \"site_title\": \"Appki Shop Admin\",\n    \"site_header\": \"Appki Shop\",\n    \"site_brand\": \"Appki Shop\",\n    #\"site_logo\": \"img/logo.png\",\n    \"login_logo\": None,\n    # Logo to use for login form in dark themes (defaults to login_logo)\n    \"login_logo_dark\": None,\n    # CSS classes that are applied to the logo above\n    \"site_logo_classes\": \"img-circle\",",
         "detail": "project.settings",
         "documentation": {}
     },
@@ -2378,7 +2394,7 @@
         "kind": 5,
         "importPath": "project.urls",
         "description": "project.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls, name='admin'),\n    path('delivery/', include('delivery.urls', namespace='delivery')),\n    path('shop/', include('shop.urls', namespace='shop')),\n    path('aboutus/', aboutus, name='aboutus'),\n    path('aboutus/<slug>', Author.as_view(), name='author'),\n    path('', include('user.urls', namespace='user')),\n    path('reset_password/', MyPasswordResetView.as_view(), name='mypasswordresetview'),\n    path('reset_password/done/', MyPasswordResetDoneView.as_view(), name='mypasswordresetdoneview'),\n    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls, name='admin'),\n    path('delivery/', include('delivery.urls', namespace='delivery')),\n    path('shop/', include('shop.urls', namespace='shop')),\n    path('sellerpatners/', sellerpatners, name='sellerpatners'),\n    path('aboutus/', aboutus, name='aboutus'),\n    path('aboutus/<slug>', Author.as_view(), name='author'),\n    path('', include('user.urls', namespace='user')),\n    path('reset_password/', MyPasswordResetView.as_view(), name='mypasswordresetview'),\n    path('reset_password/done/', MyPasswordResetDoneView.as_view(), name='mypasswordresetdoneview'),",
         "detail": "project.urls",
         "documentation": {}
     },
@@ -2716,6 +2732,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "shop.migrations.0037_payment_type",
+        "description": "shop.migrations.0037_payment_type",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('shop', '0036_passwordresetrequest'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='payment',\n            name='type',\n            field=models.CharField(max_length=100, null=True),\n        ),",
+        "detail": "shop.migrations.0037_payment_type",
+        "documentation": {}
+    },
+    {
         "label": "OrderAdmin",
         "kind": 6,
         "importPath": "shop.admin",
@@ -2855,7 +2880,7 @@
         "kind": 6,
         "importPath": "shop.models",
         "description": "shop.models",
-        "peekOfCode": "class Payment(models.Model):\n    stripe_charge_id = models.CharField(max_length=50)\n    user = models.ForeignKey(User,\n                             on_delete=models.SET_NULL, blank=True, null=True)\n    amount = models.FloatField()\n    timestamp = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return self.user.username\nclass comments(models.Model):\n    user=models.ForeignKey(User,on_delete=models.CASCADE)",
+        "peekOfCode": "class Payment(models.Model):\n    stripe_charge_id = models.CharField(max_length=50)\n    user = models.ForeignKey(User,\n                             on_delete=models.SET_NULL, blank=True, null=True)\n    amount = models.FloatField()\n    type=models.CharField(max_length=100, null=True)\n    timestamp = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return self.user.username\nclass comments(models.Model):",
         "detail": "shop.models",
         "documentation": {}
     },
@@ -3800,7 +3825,7 @@
         "kind": 5,
         "importPath": "user.forms",
         "description": "user.forms",
-        "peekOfCode": "PAYMENT_CHOICES = (\n    ('O','Online Payment'),\n    ('C', 'Cash On Delivery'),\n)\nclass CheckoutForm(forms.Form):\n    shipping_address = forms.CharField(required=False)\n    shipping_address2 = forms.CharField(required=False)\n    shipping_country = CountryField(blank_label='(select country)').formfield(\n        required=False,\n        widget=CountrySelectWidget(attrs={",
+        "peekOfCode": "PAYMENT_CHOICES = (\n    ('O','Online Payment'),\n    ('C', 'Cash On Delivery'),\n    ('Cr', 'Credit'),\n)\nclass CheckoutForm(forms.Form):\n    shipping_address = forms.CharField(required=False)\n    shipping_address2 = forms.CharField(required=False)\n    shipping_country = CountryField(blank_label='(select country)').formfield(\n        required=False,",
         "detail": "user.forms",
         "documentation": {}
     },
